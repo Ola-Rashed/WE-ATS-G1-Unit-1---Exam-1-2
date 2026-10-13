@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WE ATS G1 Unit 1 - Exams</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#1d2330;--mu:#5d6678;--ac:#2f5bea;--ok:#e8f5ec;--okb:#2e8b57;--bd:#dde1ea;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14171f;--card:#1e222c;--tx:#e8ebf2;--mu:#9aa3b5;--ac:#7c9bff;--ok:#1b2e24;--okb:#5fc88a;--bd:#2f3542}}
+:root[data-theme=dark]{--bg:#14171f;--card:#1e222c;--tx:#e8ebf2;--mu:#9aa3b5;--ac:#7c9bff;--ok:#1b2e24;--okb:#5fc88a;--bd:#2f3542}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,Segoe UI,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:16px}
+h1{font-size:1.25rem;margin:8px 0 2px}.sub{color:var(--mu);font-size:.9rem;margin:0 0 12px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+button{font:inherit;padding:8px 14px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;cursor:pointer}
+button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+h2{font-size:1.05rem;margin:22px 0 6px;color:var(--ac)}
+.note{background:var(--card);border:1px dashed var(--bd);border-radius:8px;padding:8px 12px;font-size:.9rem;color:var(--mu)}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:10px 14px;margin:8px 0;cursor:pointer}
+.q:hover,.q:focus{border-color:var(--ac);outline:none}
+.o{color:var(--mu);margin:4px 0 0 18px;font-size:.95rem}
+.a{display:none;margin-top:8px;padding:8px 10px;background:var(--ok);border-left:4px solid var(--okb);border-radius:6px}
+.q.show .a{display:block}
+.hint{font-size:.8rem;color:var(--mu)}
+</style></head><body><main>
+<h1>WE ATS - G1 - Unit 1: Basic Computer Hardware / Software</h1>
+<p class="sub">Semester One 2026-2027 &middot; Tap a question to show or hide its answer</p>
+<div class="bar"><button id="t0" class="on">Exam 1</button><button id="t1">Exam 2</button><button id="sa">Show all</button><button id="ha">Hide all</button></div>
+<div id="app"></div></main>
+<script>
+const TF="True or False (1 mark each)",MC="Choose the correct answer (1 mark each)",FB="Fill in the blanks (1 mark each)",AQ="Answer the following questions (2 marks each)",CP="Compare (3 marks each)";
+const E=[[
+[TF,"",[
+["A computer is an electronic device that processes information or data.","True"],
+["A Real-Time Operating System (RTOS) is mainly used on personal desktop computers for everyday office work.","False"],
+["An absolute path shows a file's location based only on the current folder.","False"],
+["POST stands for Power-On Self-Test and checks hardware before the operating system loads.","True"],
+["Drinks can be kept next to a computer as long as they have a lid.","False"],
+["Recording the result of each troubleshooting step helps identify the actual cause of a fault.","True"]]],
+[MC,"",[
+["Which type of computer is mainly used by artists to create detailed graphics and animations?|a) Desktop b) Server c) Workstation d) Mainframe","C"],
+["Which function of the Operating System is responsible for allocating memory to running programs?|a) Device Management b) Memory Management c) File Management d) Security","B"],
+["Which tool is commonly used to create a bootable USB from an ISO file?|a) Disk Management b) Rufus c) Device Manager d) Task Scheduler","B"],
+["Which file system is mainly used with Linux-based computers?|a) NTFS b) FAT32 c) HFS+ d) EXT","D"],
+["Which partitioning system is mainly used with UEFI?|a) FAT32 b) NTFS c) MBR d) GPT","D"],
+["Which approach is most appropriate when troubleshooting a hardware problem?|a) Change many settings at once b) Replace every component c) Test one possible cause at a time and observe the result d) Reinstall the operating system immediately","C"]]],
+[FB,"",[
+["The ______ is the main circuit board that connects all the components of a computer.","motherboard"],
+["An ______ acts as a link between a computer's software and hardware, managing resources such as memory and CPU time.","Operating System (OS)"],
+["The ______ allows the user to choose the device used to start the computer, such as a USB flash drive or hard disk.","Boot Menu"],
+["The address that shows the location of a file or folder on a computer is called a ______.","file path"],
+["After completing POST, the BIOS locates and starts the ______, which then loads the operating system into memory.","bootstrap loader / bootloader"],
+["The Windows utility used to check hardware devices and their driver status is called ______.","Device Manager"]]],
+["Matching 1 (1 mark each)","Column B: A. Processes instructions and calculations - the 'brain' of the computer | B. Short-term, temporary storage for active data | C. Permanent storage for files | D. The main circuit board that connects all components",[
+["Motherboard","D"],["CPU","A"],["RAM","B"],["HDD/SSD","C"]]],
+["Matching 2 (1 mark each)","Column B: A. Mobile operating systems for smartphones and tablets | B. Operating systems mainly used on PCs and laptops | C. Server operating systems for managing networks and large systems | D. Operating systems built for specific tasks requiring fast, reliable performance",[
+["Windows / macOS / Linux","B"],["iOS / Android","A"],["RTOS","D"],["Windows Server / RHEL","C"]]],
+[AQ,"",[
+["Explain the difference between hardware and software.","Hardware is the physical, touchable parts of a computer. Software is programming code that tells the hardware what to do; it cannot be touched."],
+["Explain the purpose of the CPU socket.","It is the connector on the motherboard where the CPU is installed, letting it connect and communicate with the rest of the computer."],
+["Describe the function of the CMOS battery and explain what happens when it stops working.","It keeps BIOS settings like date and time saved when the computer is off. When it dies, the computer shows the wrong date/time and loses settings."],
+["Explain the Process Management function of an Operating System.","Starts, stops, and schedules programs, controlling which one uses the CPU."],
+["Write the correct steps for creating a new folder in Windows.","Right-click -> New -> Folder -> type the name -> press Enter."],
+["Explain how to change the Boot Order Configuration in BIOS.","On the Boot page, use + and - to reorder devices, then press F10 to save and reboot."],
+["A student is asked to install RAM but is wearing a metal bracelet and has not disconnected the computer from power. Identify the safety problems and state what the student should do.","Problems: the computer is still connected to power, and the bracelet is a conductive accessory that may increase risk when handling electronic components. The student should stop, switch off the computer, disconnect it from power, remove the conductive accessory as appropriate, and use the required ESD protection before handling the RAM."],
+["Describe the general steps followed to install an operating system using a bootable USB, from powering on the computer to finishing setup.","Insert the USB, boot into BIOS, set the USB as first boot device, save &amp; reboot, follow the installer (accept license, choose partition, wait), then set region, keyboard, name, and password."]]],
+[CP,"",[
+["Compare between HDD and SSD in terms of speed, moving parts, and reliability.","An HDD has moving parts and is slower. An SSD has no moving parts, so it is faster and more reliable, but costs more."],
+["Compare between L1, L2, and L3 cache memory.","L1 is smallest and fastest, closest to the core. L2 is larger and a bit slower. L3 is largest and shared, slower than both but still faster than RAM."],
+["Compare between an Absolute Path and a Relative Path.","An absolute path starts from the drive. A relative path is based on the current folder."],
+["Compare between BIOS and UEFI in terms of interface, boot speed, security, and storage support.","BIOS: text interface, slower, less secure, 2TB limit. UEFI: graphical, faster, Secure Boot, supports huge drives."]]]
+],[
+[TF,"",[
+["Hardware refers to the physical, tangible components of a computer that can be seen and touched.","True"],
+["Software is a physical, tangible part of the computer that can be touched, in the same way as hardware.","False"],
+["Android, a mobile operating system, is based on Linux.","True"],
+["NTFS is the main file system used by modern Windows operating systems.","True"],
+["Touching the gold contacts of a RAM module is an acceptable way to hold the module during installation.","False"],
+["A systematic troubleshooting process should change several components at the same time to save time.","False"]]],
+[MC,"",[
+["Which of the following is an internal hardware component?|a) Keyboard b) Monitor c) Motherboard d) Mouse","C"],
+["Which of the following is an example of System Software?|a) Microsoft Word b) VLC Media Player c) Windows Operating System d) WhatsApp","C"],
+["Which type of operating system is used in robots and medical devices requiring fast, reliable performance?|a) Mobile OS b) Real-Time Operating System (RTOS) c) Server OS d) Desktop OS","B"],
+["Which type of file is used to reduce file size and group multiple files together?|a) Executable File b) Compressed File c) System File d) Image File","B"],
+["Which firmware is considered the modern replacement for BIOS?|a) POST b) GPT c) UEFI d) CMOS","C"],
+["A computer reports that the operating system cannot be found. Which sequence is most appropriate?|a) Change the monitor → rename files → replace keyboard b) Check storage detection → check boot order → verify the boot device c) Format every disk → reinstall all drivers d) Replace RAM immediately","B"]]],
+[FB,"",[
+["______ refers to the physical, tangible parts of a computer that can be seen and touched.","Hardware"],
+["The two main categories of software are System Software and ______.","Application Software"],
+["An operating system is a collection of ______ that together control the operations of a computer system.","system programs"],
+["A ______ is a container that holds files, organized like the physical folders used to keep papers.","folder"],
+["______ (Unified Extensible Firmware Interface) is the modern replacement for BIOS.","UEFI"],
+["An ______ wrist strap is used to help protect electronic components from electrostatic discharge.","ESD"]]],
+["Matching 1 (1 mark each)","Column B: A. Software that helps the OS communicate with hardware devices | B. Manages hardware and software resources and links them together | C. Helps maintain and optimize the computer system | D. Creates and edits documents with advanced formatting",[
+["Operating System","B"],["Device Driver","A"],["Utility Software","C"],["Word Processing Software","D"]]],
+["Matching 2 (1 mark each)","Column B: A. Locates and starts loading the OS after POST completes | B. Prevents unauthorized operating systems from loading during startup | C. Older partitioning system used mainly with BIOS | D. Checks and initializes essential hardware components at power-on",[
+["POST","D"],["Bootstrap Loader","A"],["Secure Boot","B"],["MBR","C"]]],
+[AQ,"",[
+["Define a computer and give two examples of its uses in daily life.","An electronic device that processes, stores, and retrieves data. Uses: writing, playing games, watching videos, or sending messages."],
+["Explain the role of the Power Supply Unit (PSU) in a computer.","It converts electricity from the wall outlet into stable, usable power for all computer components."],
+["Write the correct steps to create a new partition using Disk Management in Windows.","Right-click unallocated space -> New Simple Volume -> Next -> set size -> Next -> pick a drive letter -> Next -> format as NTFS -> Finish."],
+["Define BIOS and explain its role before an operating system loads.","Firmware on the motherboard that starts the computer and checks hardware before the OS loads."],
+["Explain the two methods used to rename a file or folder in Windows.","Right-click -> Rename -> type name -> Enter, or select the file -> press F2 -> type name -> Enter."],
+["Define Secure Boot and explain its purpose.","A UEFI security feature that stops unauthorized operating systems and malware from loading at startup."],
+["Why is selecting the correct USB device an important safety procedure when creating bootable installation media?","Creating bootable media normally involves formatting or erasing the selected USB device. Selecting the wrong device could therefore cause loss of important data on another storage device."],
+["List four safety practices that should be followed during operating system installation.","1. Use the correct and approved installation media. 2. Verify the correct installation disk/partition. 3. Maintain a stable power supply. 4. Do not interrupt the installation process."]]],
+[CP,"",[
+["Compare between primary memory and secondary memory.","Primary memory (RAM/ROM) is fast and holds data the CPU needs right now. Secondary memory (HDD/SSD) is slower but stores data permanently."],
+["Compare between an Operating System and a Device Driver.","The OS manages the whole computer. A driver only lets the OS talk to one specific device."],
+["Compare between MBR and GPT partitioning systems.","MBR: older, 2TB limit, 4 partitions. GPT: modern, huge drives, many more partitions."],
+["Compare between the Boot Menu and the BIOS Setup screen.","The Boot Menu picks a device for one boot. The BIOS Setup screen permanently changes settings."]]]
+]];
+const app=document.getElementById("app");
+function render(i){let n=0,h="";E[i].forEach(([t,note,items])=>{h+=`<h2>${t}</h2>`+(note?`<p class="note">${note}</p>`:"");items.forEach(([q,a])=>{n++;const[qt,o]=q.split("|");h+=`<div class="q" tabindex="0" role="button"><b>${n}.</b> ${qt}${o?`<div class="o">${o}</div>`:""}<div class="a"><b>Answer:</b> ${a}</div></div>`})});app.innerHTML=h;
+document.getElementById("t0").className=i?"":"on";document.getElementById("t1").className=i?"on":""}
+app.addEventListener("click",e=>{const q=e.target.closest(".q");if(q)q.classList.toggle("show")});
+app.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){const q=e.target.closest(".q");if(q){e.preventDefault();q.classList.toggle("show")}}});
+document.getElementById("t0").onclick=()=>render(0);
+document.getElementById("t1").onclick=()=>render(1);
+document.getElementById("sa").onclick=()=>app.querySelectorAll(".q").forEach(q=>q.classList.add("show"));
+document.getElementById("ha").onclick=()=>app.querySelectorAll(".q").forEach(q=>q.classList.remove("show"));
+render(0);
+</script></body></html>
